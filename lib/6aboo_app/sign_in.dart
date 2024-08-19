@@ -313,33 +313,45 @@ class _LoginScreenState extends State<LoginScreen> {
                                   color: Colors.green[900],
                                   borderRadius: BorderRadiusDirectional.circular(15)
                               ),
-                              child: MaterialButton(
-                                onPressed: (){},
-                                child:const Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.facebook,
-                                      color: Colors.white,
-                                      size: 30,
-                                    ),
-                                    Text(
-                                      'Sign in with Facebook',
-                                      style: TextStyle(
-                                          fontFamily: 'Janna',
+                              child: BlocConsumer<AppCubit,AppState>(
+                                listener: (context,state){
+                                  if(state is FaceBookSignInSuccess)
+                                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>TabooScreen()), (x)=>false);
+                                },
+                                builder: (context,state){
+                                  return  MaterialButton(
+                                    onPressed: (){
+
+                                      AppCubit.get(context).signInWithFacebook();
+
+                                    },
+                                    child:const Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.facebook,
                                           color: Colors.white,
-                                          fontSize: 16
-                                      ),
-                                    )
-                                  ],
-                                ),
+                                          size: 30,
+                                        ),
+                                        Text(
+                                          'Sign in with Facebook',
+                                          style: TextStyle(
+                                              fontFamily: 'Janna',
+                                              color: Colors.white,
+                                              fontSize: 16
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  );
+                                },
                               ),
                             ),
                             const SizedBox(
                               height: 10,
                             ),
                             // sign in google
-                            //q
+
                             Container(
                               decoration: BoxDecoration(
                                   color: Colors.black,

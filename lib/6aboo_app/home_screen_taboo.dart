@@ -2,6 +2,7 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -30,6 +31,14 @@ class _TabooScreenState extends State<TabooScreen> {
   var myScrollController=ScrollController();
 
   int curentImage=0;
+  @override
+  // void initState()async {
+  //   super.initState();
+  //   print('+++++++++++++++++++++++++++++++++++++++');
+  //   dynamic n=await FirebaseMessaging.instance.getToken();
+  //   print(n.toString());
+  //
+  // }
 
   List<FeturedModel> houses=[
     FeturedModel(
@@ -507,6 +516,7 @@ class _TabooScreenState extends State<TabooScreen> {
             onPressed: (){
               AppCubit.get(context).signOut().then((value){
                 CasheHelper.RemoveData(key: 'token');
+                CasheHelper.RemoveData(key: 'facebookToken');
                 Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>LoginScreen()), (s)=>false);
               });
 

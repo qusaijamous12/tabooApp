@@ -26,4 +26,5 @@ class MyBlocObserver extends BlocObserver {
   }
 }
 
-dynamic token='';
+dynamic googleToken='';
+dynamic facebookToken='';

@@ -21,10 +21,12 @@ void main()async {
   Bloc.observer = MyBlocObserver();
   await CasheHelper.init();
 
-  token=CasheHelper.GetData(key: 'token');
-  print(token.toString());
+  googleToken=CasheHelper.GetData(key: 'token');
+  facebookToken=CasheHelper.GetData(key: 'facebookToken');
+  print(googleToken.toString());
+  print(facebookToken.toString());
  late Widget StartScreen;
-  if(token==null ||token==''){
+  if((googleToken==null ||googleToken=='') && (facebookToken==null || facebookToken=='')){
     StartScreen=LoginScreen();
   }
   else

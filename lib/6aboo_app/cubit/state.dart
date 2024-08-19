@@ -9,3 +9,7 @@ class GoogleSignInErrorState extends AppState{}
 class GoogleSignOutSuccessState extends AppState{}
 
 class GoogleSignOutErrorState extends AppState{}
+
+class FaceBookSignInSuccess extends AppState{}
+
+class FaceBookSignInErrorState extends AppState{}
